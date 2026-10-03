@@ -32,10 +32,61 @@ linear-gradient(115deg,transparent 0 47%,#9de7ff05 50%,transparent 53%)}
 .final{position:relative;overflow:hidden}.final:before{content:"CITY";position:absolute;font:900 32vw/1 "Noto Sans KR";color:#ffffff018;letter-spacing:-.1em;z-index:-1}.signal{animation:signal 1.6s ease-in-out infinite}@keyframes signal{50%{box-shadow:0 0 55px #9bdcff;transform:scale(1.35)}}
 .music{border-top:1px solid #aeeaff4f}.music:before{content:"CITY FM / 02:17 AM";position:absolute;right:10px;top:-19px;font:700 7px "Space Mono";letter-spacing:.13em;color:#59707e}
 @media(max-width:760px){.hero-inset,.neon-signs .s3,.neon-signs .s4{display:none}.cursorGlow{display:none}}
+
+/* ===== HERO LAYOUT FIX V2 ===== */
+.hero{min-height:100vh;overflow:hidden;padding:132px 24px 88px}
+.hero:after{
+  content:"CITY"; right:3.5vw; bottom:2.5vh;
+  font-size:clamp(150px,23vw,330px); line-height:.78;
+  color:transparent; -webkit-text-stroke:1px rgba(207,238,255,.075);
+  opacity:.62; transform:none; letter-spacing:-.09em;
+  z-index:-2; pointer-events:none;
+}
+.hero .wrap{position:relative;z-index:3}
+.hero h1{max-width:820px;margin:30px 0 34px;font-size:clamp(64px,8.2vw,118px)}
+.hero h1:after{right:auto;left:calc(100% + 24px);top:9px;white-space:nowrap}
+.herogrid{grid-template-columns:minmax(0,650px) minmax(260px,360px);gap:64px;align-items:start}
+.hero .lead{font-size:14px;max-width:650px}
+.manifest{
+  position:relative; padding:18px 18px 18px 23px;
+  border:1px solid rgba(155,220,255,.13); border-left:2px solid rgba(155,220,255,.55);
+  background:linear-gradient(110deg,rgba(155,220,255,.055),rgba(7,10,15,.42));
+  backdrop-filter:blur(8px); min-height:110px;
+}
+.manifest:before{content:"RUNNER STATUS";position:absolute;right:12px;top:10px;font:700 7px "Space Mono";letter-spacing:.16em;color:#4f6472}
+.hero-inset{
+  right:4.2vw;top:128px;width:148px;height:205px;opacity:.7;
+  border-color:rgba(155,220,255,.12);z-index:1
+}
+.ticker{position:relative;z-index:8}
+.music{width:270px;right:14px;bottom:14px}
+
+/* extra city accents that don't collide with content */
+.hero-lights{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.hero-lights:before{content:"";position:absolute;width:44vw;height:44vw;right:-12vw;top:17vh;border-radius:50%;background:radial-gradient(circle,rgba(105,220,255,.09),rgba(105,220,255,.025) 30%,transparent 68%);filter:blur(12px)}
+.hero-lights:after{content:"";position:absolute;left:0;right:0;bottom:4vh;height:1px;background:linear-gradient(90deg,transparent,rgba(155,220,255,.18),rgba(255,64,88,.12),transparent);box-shadow:0 0 20px rgba(105,220,255,.12)}
+.city-coords{position:absolute;right:4vw;bottom:9vh;z-index:2;text-align:right;font:700 7px/1.8 "Space Mono";letter-spacing:.15em;color:#4c606d;pointer-events:none}
+.city-coords b{display:block;color:#7fbcd3;font-size:8px}
+.hero-mini{position:absolute;left:24px;bottom:28px;z-index:2;display:flex;gap:18px;font:700 7px "Space Mono";letter-spacing:.15em;color:#465966}
+.hero-mini span:before{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;background:#69dcff;box-shadow:0 0 9px #69dcff;margin-right:7px;vertical-align:1px}
+@media(max-width:1000px){
+ .hero-inset{display:none}
+ .herogrid{grid-template-columns:minmax(0,620px) minmax(230px,300px);gap:35px}
+ .hero h1:after{display:none}
+}
+@media(max-width:760px){
+ .hero{padding-top:115px;padding-bottom:95px}
+ .hero:after{font-size:46vw;right:-7vw;bottom:9vh;opacity:.42}
+ .herogrid{grid-template-columns:1fr;gap:24px}
+ .manifest{max-width:440px}
+ .city-coords{display:none}
+ .hero-mini{left:24px;bottom:25px}
+ .music{width:calc(100% - 20px);right:10px}
+}
 </style></head><body class="lock"><div class="noise"></div><div class="aurora"></div><div class="cursorGlow" id="cursorGlow"></div><div class="fog"></div><div class="glowline" id="scrollLine"></div><canvas id="rain"></canvas><div id="intro"><div class="buildings" id="buildings"></div><div class="road"></div><div class="neon-signs"><span class="sign s1" style="--sd:1.8s">CITY / NIGHT</span><span class="sign s2" style="--sd:2.1s">RUNNER 24H</span><span class="sign s3" style="--sd:2.4s">GUILD QUEST</span><span class="sign s4" style="--sd:2.7s">KEEP MOVING</span></div><div class="light-trails"><i class="trail" style="--td:0s"></i><i class="trail red" style="--td:-2.2s"></i><i class="trail" style="--td:-4s"></i></div><div class="core"><div><div class="coord">NIGHT DISTRICT · CITY GUILD</div><div class="logo">도시</div><div class="eng">CITY</div><button class="enter" id="enter">ENTER THE CITY →</button></div></div></div><audio id="bgm" src="Act-Like-You-Know.mp3" preload="auto" loop></audio>
 <div class="music"><div class="mtop"><button class="play" id="play">Ⅱ</button><div class="meta"><b>ACT LIKE YOU KNOW</b><small>MATT LARGE · OVERTONE LOFI / CITY NIGHT RADIO</small></div><button class="mute" id="mute">♪</button></div><div class="mbar" id="mbar"><div class="mfill" id="mfill"></div></div><div class="mbot"><span class="pct" id="pct">12%</span><input class="vol" id="vol" type="range" min="0" max="1" step=".01" value=".12"><span class="mtime" id="mtime">00:00 / 03:11</span></div></div>
 <nav><div class="brand">도시 <small>CITY GUILD</small></div><div class="nav"><a href="#must">MUST</a><a href="#prefer">PREFER</a><a href="#rules">RULES</a></div></nav>
-<header class="hero"><div class="hero-inset"></div><div class="wrap"><div class="ey">CITY GUILD / RUN TOGETHER / AFTER DARK</div><h1>도시와 함께<br><span>달릴 사람.</span></h1><div class="herogrid"><p class="lead">친목보다 <b style="color:#dcebf4">길드 활동과 함께 달리는 것</b>을 중요하게 생각합니다. 부담 없이 즐기되, 기본적인 길드 활동은 같은 방향으로 함께해주세요.</p><div class="manifest">QUIET IS OK.<br>SKILL DOESN'T MATTER.<br><b>JUST KEEP RUNNING WITH US.</b></div></div></div></header><div class="ticker"><div>RUN WITH THE CITY · GUILD QUEST · RESPECT · KEEP MOVING · QUIET BUT TOGETHER · RUN WITH THE CITY · GUILD QUEST · RESPECT · KEEP MOVING · QUIET BUT TOGETHER · RUN WITH THE CITY · GUILD QUEST · RESPECT · KEEP MOVING · </div></div>
+<header class="hero"><div class="hero-lights"></div><div class="hero-inset"></div><div class="city-coords"><b>SEOUL NIGHT GRID</b>37.5665 N / 126.9780 E<br>RUNNER NETWORK · ONLINE</div><div class="hero-mini"><span>GUILD SIGNAL</span><span>KEEP MOVING</span></div><div class="wrap"><div class="ey">CITY GUILD / RUN TOGETHER / AFTER DARK</div><h1>도시와 함께<br><span>달릴 사람.</span></h1><div class="herogrid"><p class="lead">친목보다 <b style="color:#dcebf4">길드 활동과 함께 달리는 것</b>을 중요하게 생각합니다. 부담 없이 즐기되, 기본적인 길드 활동은 같은 방향으로 함께해주세요.</p><div class="manifest">QUIET IS OK.<br>SKILL DOESN'T MATTER.<br><b>JUST KEEP RUNNING WITH US.</b></div></div></div></header><div class="ticker"><div>RUN WITH THE CITY · GUILD QUEST · RESPECT · KEEP MOVING · QUIET BUT TOGETHER · RUN WITH THE CITY · GUILD QUEST · RESPECT · KEEP MOVING · QUIET BUT TOGETHER · RUN WITH THE CITY · GUILD QUEST · RESPECT · KEEP MOVING · </div></div>
 <section id="must" style="position:relative"><span class="section-index">DISTRICT / 01</span><div class="wrap reveal"><div class="kicker">01 / REQUIRED ACTIVITY</div><div class="title">부담은 가볍게.<br>기본 활동은 확실하게.</div><p class="lead">도시는 많은 친목을 요구하지 않습니다. 대신 길드라는 이름으로 함께하는 최소한의 활동과 서로를 향한 기본적인 예의를 중요하게 생각합니다.</p><div class="grid4"><div class="card"><div class="n">01 / SOLO</div><h3>1인 길퀘 필수</h3><p>개인 길드 퀘스트는 반드시 참여해주세요.</p></div><div class="card"><div class="n">02 / WEEKLY</div><h3>주 2회 이상 길퀘</h3><p>길드 활동 유지를 위해 주 2회 이상 함께해주세요.</p></div><div class="card"><div class="n">03 / AWAY</div><h3>장기 미접속 공유</h3><p>오래 접속하기 어렵다면 운영진에게 미리 알려주세요.</p></div><div class="card"><div class="n">04 / RESPECT</div><h3>기본적인 매너</h3><p>서로 존중하고 상대가 불편할 수 있는 언행은 피합니다.</p></div></div></div></section>
 <section id="prefer" style="position:relative"><span class="section-index">DISTRICT / 02</span><div class="wrap reveal"><div class="kicker">02 / WHO WE LIKE</div><div class="title">이런 러너라면<br>도시와 잘 맞아요.</div><div class="prefer"><div class="poster"><div class="kicker">CITY RUNNER</div><h3>달리는 걸<br>좋아한다면.</h3><p class="lead">실력이 중요한 길드가 아닙니다. 같이 게임을 즐기고 해야 할 활동을 꾸준히 해주는 사람이면 충분합니다.</p></div><div class="plist"><div class="p"><b>01</b><div><h3>팜보다 달리기</h3><p>레이싱과 플레이 자체를 선호하는 분.</p></div></div><div class="p"><b>02</b><div><h3>꾸준한 길퀘</h3><p>길드 퀘스트를 꾸준한 활동으로 함께해주실 분.</p></div></div><div class="p"><b>03</b><div><h3>실력 상관없이 즐겁게</h3><p>잘하고 못하고보다 게임 자체를 즐기는 분.</p></div></div><div class="p"><b>04</b><div><h3>조용해도 함께</h3><p>말이 많지 않아도 괜찮지만 길드 활동은 함께해주세요.</p></div></div></div></div></div></section>
 <section class="red" style="position:relative"><span class="section-index">RESTRICTED / 03</span><div class="wrap reveal"><div class="kicker" style="color:#ff6574">03 / RED LINE</div><div class="title">이 선은<br>넘지 않아요.</div><div class="warnings"><div class="warn"><b>NO.01</b><h3>비매너 · 욕설 · 분쟁</h3><p>길드원 사이 공개적인 싸움과 불필요한 갈등은 자제합니다.</p></div><div class="warn"><b>NO.02</b><h3>고의적인 길퀘 방해</h3><p>함께하는 길드 활동을 의도적으로 방해하지 않습니다.</p></div><div class="warn"><b>NO.03</b><h3>분위기를 해치는 행동</h3><p>반복적으로 길드 분위기를 무너뜨리는 행동은 제재 대상이 될 수 있습니다.</p></div><div class="warn"><b>NO.04</b><h3>불쾌감을 주는 행동</h3><p>다른 길드원이 불편함을 느끼는 말과 행동을 하지 않습니다.</p></div></div></div></section>
