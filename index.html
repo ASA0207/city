@@ -109,6 +109,26 @@ linear-gradient(115deg,transparent 0 47%,#9de7ff05 50%,transparent 53%)}
 .music{width:268px!important;right:14px!important;bottom:14px!important}.music:before{color:#536b79!important}
 @media(max-width:900px){.herogrid{grid-template-columns:1fr!important;gap:24px!important}.manifest{max-width:560px!important}.hero:after{font-size:34vw!important;right:-5vw!important;bottom:8vh!important}}
 @media(max-width:600px){.hero{padding:112px 22px 100px!important}.hero h1{font-size:clamp(52px,16vw,76px)!important;margin-bottom:32px!important}.hero:after{font-size:44vw!important;bottom:13vh!important;opacity:.75!important}.hero .lead{font-size:13px!important}.music{width:calc(100% - 20px)!important;right:10px!important;bottom:10px!important}}
+
+/* ===== V4: REMOVE OVERSIZED CITY TYPOGRAPHY COMPLETELY ===== */
+.hero::after,
+.hero:after,
+.final::before,
+.final:before,
+.poster::after,
+.poster:after {
+    content: none !important;
+    display: none !important;
+    background: none !important;
+}
+.final {
+    isolation: isolate;
+    overflow: hidden;
+}
+.final > .wrap {
+    position: relative;
+    z-index: 2;
+}
 </style></head><body class="lock"><div class="noise"></div><div class="aurora"></div><div class="cursorGlow" id="cursorGlow"></div><div class="fog"></div><div class="glowline" id="scrollLine"></div><canvas id="rain"></canvas><div id="intro"><div class="buildings" id="buildings"></div><div class="road"></div><div class="core"><div><div class="coord">NIGHT DISTRICT · CITY GUILD</div><div class="logo">도시</div><div class="eng">CITY</div><button class="enter" id="enter">ENTER THE CITY →</button></div></div></div><audio id="bgm" src="Act-Like-You-Know.mp3" preload="auto" loop></audio>
 <div class="music"><div class="mtop"><button class="play" id="play">Ⅱ</button><div class="meta"><b>ACT LIKE YOU KNOW</b><small>MATT LARGE · OVERTONE LOFI / CITY NIGHT RADIO</small></div><button class="mute" id="mute">♪</button></div><div class="mbar" id="mbar"><div class="mfill" id="mfill"></div></div><div class="mbot"><span class="pct" id="pct">12%</span><input class="vol" id="vol" type="range" min="0" max="1" step=".01" value=".12"><span class="mtime" id="mtime">00:00 / 03:11</span></div></div>
 <nav><div class="brand">도시 <small>CITY GUILD</small></div><div class="nav"><a href="#must">MUST</a><a href="#prefer">PREFER</a><a href="#rules">RULES</a></div></nav>
